@@ -14,8 +14,16 @@ def readCSVFile():
         getWantToRead(wantToRead, reader)
     return wantToRead            
 
+def configureAuthorName():
+    bookList = readCSVFile()
+    for book in bookList:
+        authorName = book['author']
+        removeExtraSpaces = " ".join(authorName.split())
+        book['author'] = removeExtraSpaces
+    return bookList
 
 def main():
-    wantToRead = readCSVFile()
-        
+    wantToRead = configureAuthorName()
+    print(wantToRead)
+      
 main()
